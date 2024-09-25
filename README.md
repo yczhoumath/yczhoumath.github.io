@@ -1,2 +1,2 @@
 # yczhoumath.github.io
-Professional website
+This is the professional personal website of Y. Zhou.

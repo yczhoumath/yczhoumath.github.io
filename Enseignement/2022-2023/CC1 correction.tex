@@ -1,0 +1,264 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\linespread{1.2}
+\pagestyle{empty}
+\usepackage{enumitem}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\scalarprod}[2]{\langle#1,#2\rangle}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\abs}[1]{\left|#1\right|}
+
+\usepackage{xcolor}
+\newcommand{\correction}[1]{{\color{red}#1}}
+\newcommand{\comment}[1]{{\color{blue}#1}}
+
+\begin{document}
+
+\noindent LU2MA260 - Contrôle continu n\textdegree1
+\hfill 8 novembre 2022
+\medskip\hrule
+\vspace{.3in}
+
+\emph{Durée: 1 heure. Aucun document autorisé.
+Ce contrôle sera noté sur \textbf{10 points}.}
+
+\correction{Corrigé en rouge (peut-être indication toute seule).}
+
+\comment{Commentaire en bleu.}
+% \emph{Chaque exercice sera noté sur 2 points. Si la feuille n'est pas blanche, ça fait au moins 0.5.
+% Si vous n'avez pas fini, ça fait au plus 1.5. De plus, une erreur calculatoire qui ne change pas la réponse finale sera pas tenue en compte dans les notes.}
+
+\vspace{.1in}
+
+\noindent
+\textbf{1. (1+1 pts)} Questions de cours:
+
+\begin{enumerate}[label=\alph*)]
+    % \item Rappeler le critère de d'Alembert pour les séries numériques.
+    \item Démontrer que la série $\sum_{n\geq1}\frac{1}{n^\alpha}$ converge si $\alpha>1$.\\
+    \correction{Par \textbf{comparaison séries-intégrales}, voir le polycopié, Chapitre 1, Théorème 4.3.1.}\\
+    \comment{Méthode alternative: \textbf{critère de la loupe} de Cauchy.\\
+    La vérification des conditions, surtout la \textbf{décroissance vers 0} de la suite, est indispensable.}
+    \item Énoncer le théorème sur la dérivabilité de la convergence uniforme d'une suite de fonctions.\\
+    \correction{Voir le polycopié, Chapitre 2, Théorème 1.4.2.}\\
+    \comment{Il est indispensable que \textbf{la suite des dérivées $(f_n')_n$ converge uniformément}.}
+\end{enumerate}
+
+% \vspace{.1in}
+
+
+% \noindent
+% 3. Vrai ou faux (jusitifier s'il est vrai, en donner un contre-exemple s'il est faux):
+% \begin{enumerate}[label=\alph*)]
+%     \item Soit $(a_n)_{n\geq0}$ une suite dans $\R$ telle que la série $\sum_n u_n$ n'est pas convergente. Alors la somme partiel $S_n=\sum_{k\geq0}^na_k$ tend vers $+\infty$ lorsque $n\to+\infty$.
+%     \item Soit $f:[a,+\infty[ \to \R^+$ une fonction continue positive telle qu'il existe $L\in\R$ (forcément positif) tel que pour tout $x\geq a$, $\int_a^xf(t)dt\leq L$. Alors l'intégrale généralisée $\int_a^{+\infty}f(t)dt$ est convergente.
+% \end{enumerate}
+
+\vspace{.1in}
+
+
+\noindent
+\textbf{2. (1+1+3+1 pts)}
+Déterminer la nature des séries numérique suivantes:
+\begin{enumerate}[label=\alph*)]
+\begin{minipage}{0.4\linewidth}
+    \item $\sum_{n\geq1}(\sqrt[n]{n}-1)$,
+    \item $\sum_{n\geq1}(\sqrt[n]{n}-1)^n$,
+    % \item $\sum_{n\geq1}ne^{-\sqrt{n}}$,
+\end{minipage}
+\begin{minipage}{0.4\linewidth}
+    % \item $\sum_{n\geq1}\frac{x^n}{n^2}$, pour $x\in\R$,
+    % \item $\sum_{n\geq0}\frac{3^n}{2^n+\alpha^n}$, où $\alpha\in\R_+$,
+    \item $\sum_{n\geq1}(-1)^{n-1}\frac{\lambda^n}{n}$, pour $\lambda\in\R$,
+    \item $\sum_{n\geq1}\frac{(3n)!}{30^n(n!)^3}$.
+    % \item $\sum_{n\geq1}\frac{\sqrt{n+1}-\sqrt{n}}{n}$.
+\end{minipage}
+\end{enumerate}
+
+\correction{
+\begin{enumerate}[label=\alph*)]
+    \item Utiliser le \textbf{développement limité}: $\sqrt[n]{n}-1=e^{\frac{1}{n}\ln(n)}-1\sim\ln(n)/n>0$, d'où la divergence.\\
+    \comment{On a $\sqrt[n]{n}>1$ car les deux côtés sont positifs est qu'à la puissance $n$ on a $n>1$.}
+    \item Par \textbf{comparaison avec les séries géométriques}: en effet, d'après a), $\sqrt[n]{n}-1\xrightarrow{n\to+\infty}0$, en particulier $0\leq(\sqrt[n]{n}-1)^n\leq(\frac{1}{2})^n$ pour $n$ assez grand, d'où la convergence.
+    \item
+    Lorsque $\abs{\lambda}<1$, \textbf{comparer avec la série géométrique} de raison $\abs{\lambda}$, d'où la convergence absolue.\\
+    % Lorsque $\lambda=-1$, c'est la \textbf{série harmonique} (au signe près).\\
+    Lorsque $\abs{\lambda}>1$, la suite $(\frac{\lambda^n}{n})_n$ ne tend pas vers 0 par croissance comparée, donc ne vérifie pas la \textbf{condition nécessaire de la convergence}, d'où la divergence.\\
+    Lorsque $\lambda=1$, appliquer le \textbf{critère des séries alternées}.\\
+    Lorsque $\lambda=-1$, c'est la \textbf{série harmonique} (au signe près).\\
+    En conclusion, la série converge si et seulement si $\lambda\in]-1,1]$.\\
+    \comment{Méthodes alternatives:\\
+    Lorsque $\lambda\in]-1,1[$, appliquer le \textbf{critère de d'Alembert}.\\
+    Lorsque $\lambda\in]-1,1]$, appliquer le \textbf{critère d'Abel}: les sommes partielles de $\sum_{n}(-1)^{n-1}\lambda^n$ sont bornées et $(\frac{1}{n})$ décroît vers 0.\\
+    Lorsque $\lambda\in[0,1]$, appliquer le \textbf{critère des séries alternées}, d'où la convergence.\\
+    Lorsque $\lambda\in]-\infty,-1]$, $(-1)^{n-1}\frac{\lambda^n}{n}=-\frac{(-\lambda)^n}{n}\leq-\frac{1}{n}$, d'où la divergence par \textbf{comparaison avec la série harmonique} (au signe près).\\
+    Faites attention:\\
+    Lorsque $\lambda<0$, la série est de signe fixe.
+    Vérifez bien certaine \textbf{décroissance vers 0} ou \textbf{croissance vers 0} avant d'appliquer le critère des séries alternées, également pour le critère d'Abel.\\
+    Dans le critère de d'Alembert, c'est la \textbf{limite} de $\frac{a_{n+1}}{a_n}$ quand $n\to+\infty$ qu'il faut vérifier à être $<1$.}
+    \item Appliquer le \textbf{critère de d'Alembert}:
+    $$\frac{a_{n+1}}{a_n}=\frac{(3n+3)!}{(3n)!}\left(\frac{n!}{(n+1)!}\right)^3\frac{30^{-n-1}}{30^{-n}}=\frac{(3n+3)(3n+2)(3n+1)}{(n+1)^3\cdot 30}\xrightarrow{n\to+\infty}\frac{27}{30}<1.$$
+    \comment{Attention: lorsqu'on remplace $n$ par $n+1$ dans $(3n)!$, on obtient
+    $$(3n+3)!=(3n+3)(3n+2)(3n+1)\cdot (3n)!,$$
+    voir TD 1 Exercice 2(m).}
+\end{enumerate}
+}
+
+\vspace{.1in}
+
+\noindent
+\textbf{3. (1+1+1 pts, Noyau de Fejér)} Considérons la suite de fonctions $(K_n)_{n\in\N}$ où on définit
+$$K_n(x)=\frac{1}{n}\frac{\sin^2(nx/2)}{\sin^2(x/2)},\quad\forall x\in]0,\pi].$$
+Déterminer la limite simple de $(K_n)_{n\in\N}$ sur $]0,\pi]$.\\
+\correction{Comme $\abs{K_n(x)}\leq\frac{1}{n\sin^2(x/2)}$, on a $\lim_nK_n(x)=0$ pour tout $x$, autrement dit la limite simple de $(K_n)_n$ vaut la fonction constante 0.}\\
+\comment{C'est la limite \textbf{par rapport à $n$} qui nous intéresse ici.}
+
+Déterminer si la convergence est uniforme sur
+\begin{enumerate}[label=\alph*)]
+    \item $I=]0,\pi[$;\\
+    \correction{La convergence n'est pas uniforme sur $I=]0,\pi[$: en effet, $(\norm{K_n-0}_\infty)_n$ ne tend pas vers 0, car, par exemple, on a $\norm{K_n}_\infty\geq K_n(\frac{1}{n})=\frac{\sin^2(1)}{n\sin^2(1/2n)}\xrightarrow{n\to+\infty}+\infty$.}
+    \item $I=[\delta,\pi]$, où $0<\delta<\pi$.\\
+    \correction{La convergence est uniforme sur $I=[\delta,\pi]$: en effet, pour tout $n\geq1$ et tout $x\in[\delta,\pi]$, d'une part on a $\sin(x/2)\geq\sin(\delta/2)>0$ puisque $\sin(x/2)$ est \textbf{strictement croissante} sur $[0,\pi]$ et $\delta\in]0,\pi[$, et d'autre part $0\leq \sin^2(nx/2)\leq1$ ; ainsi $0\leq K_n(x)\leq\frac{1}{n}\frac{1}{\sin^2(\delta/2)}$, donc $\norm{K_n}_\infty\leq\frac{1}{n\sin^2(\delta/2)}\xrightarrow{n\to+\infty}0$.}\\
+    \comment{Pour majorer $\frac{1}{\sin^2(x/2)}$, il faut \textbf{minorer} $\sin^2(x/2)$.}
+\end{enumerate}
+(Indication: majorer $\sin^2(nx/2)$ et $\frac{1}{\sin^2(x/2)}$ séparément.)\\
+% \vspace{.1in}
+
+% \noindent
+% \textbf{3. (2 pts)} Considérons la suite de fonctions $(f_n)_{n\in\N}$ où on définit pour tout $x\in[0,+\infty[$
+% $$f_n(x)=(1+\frac{x}{n})^n.$$
+% Déterminer la nature de convergence (simple, uniforme) de la suite $(K_N)_{N\in\N}$ sur $I$ avec
+% \begin{enumerate}[label=\alph*)]
+%     \item $I=[0,+\infty[$;
+%     \item $I=[0,M]$, où $M\in\R_{>0}$.
+% \end{enumerate}
+
+\vspace{.1in}
+
+\noindent
+\textbf{4. (1+1+1+2+1 pts)}
+Soit $(f_n:[0,1]\to\C)_{n\in\N}$ une suite de fonctions continues. On suppose que
+\begin{enumerate}[label=\roman*)]
+    \item la suite $(f_n)_n$ converge simplement vers une fonction intégrable $f:[0,1]\to\C$;
+    \item la convergence est uniforme sur tout compact inclus dans $]0,1]$;
+    \item \textbf{(borne uniforme) il existe $M\in\R_+$ tel que pour tout $n$, on a $\norm{f_n}_\infty\leq M$.}
+\end{enumerate}
+Sous ces conditions,
+\begin{enumerate}[label=\alph*)]
+    \item Chacune des assertions suivantes est-elle vraie ou fausse ? Démontrer si elle est vraie; en fournir un contre-exemple avec justification si elle est fausse.\\
+    \comment{À retenir: polycopié, Chapitre 2, Proposition 1.2.7; TD 2 Exercice 6; TD 2 Exercice 1.}
+    \begin{itemize}
+        % \item[a.1)] $f$ est continue sur $]0,1]$.
+        \item[a.1)] la limite $f$ est continue sur $[0,1]$.\\
+        \correction{Faux en général, voici deux contre-exemples
+        \begin{itemize}
+            \item $f_n(x)=e^{-nx}$, voir TD 2 Exercice 1(d);
+            \item $f_n(x)=(1-x)^n$, voir polycopié, Chapitre 2, Exemple 1.2.6.
+        \end{itemize}
+        }
+        \comment{Cependant, $f$ est bien continue sur $]0,1]$.}
+        \item[a.2)] la suite $(f_n)_n$ converge uniformément sur $]0,1]$.\\
+        \correction{Faux en général, avec les mêmes contre-exemples $f_n(x)=e^{-nx}$ ou les contre-exemples ci-dessous.}\\
+        \comment{La convergence uniforme sur tout compacte dans un intervalle semi-ouvert (tel que $]0,1]$) n'implique pas du tout la convergence sur tout intervalle.\\
+        Point relié: la convergence simple sur $[0,1]$ avec la convergence uniforme sur $]0,1]$ implique la convergence uniforme sur $[0,1]$, voir TD 2 Exercice 6.\\
+        D'ailleurs, ne mélangez pas la convergence uniforme d'une suite de fonctions avec la continuité uniforme d'une (seule) fonction.}
+        \item[a.3)] Si $f$ est continue sur $[0,1]$, alors la convergence est uniforme sur $[0,1]$.\\
+        \correction{Faux en général, voici quatre contre-exemples: 
+        \begin{itemize}
+            \item $f_n(x)=\left\{
+                \begin{array}{cc}
+                nx, & \text{si~} 0\leq x\leq \frac{1}{n}, \\
+                -nx+2, & \text{si~} \frac{1}{n}\leq x\leq \frac{2}{n}, \\
+                0, & \text{si~} x\geq\frac{2}{n},
+                \end{array}
+                \right.$
+                voir TD 2 Exercice 1(c);
+            \item $f_n(x)=nxe^{-nx}$, voir TD 2 Exercice 1(e);
+            \item $f_n(x)=\frac{nx}{1+n^3x^3}$, voir TD 2 Exercice 1(g);
+            \item $f_n(x)=\frac{nx}{1+n^2x^2}$, voir TD 2 Exercice 1(h).
+        \end{itemize}
+        Remarquons que ces quatre contre-exemples sont tous de la forme $f_n(x)=F(nx)$ pour certaine fonction continue $F(x)$ telle que $F(0)=0$, $F\geq0$, $\norm{F}_\infty>0$ et $F(x)\xrightarrow{x\to+\infty}0$. Ainsi, un autre contre-exemple que j'ai trouvé dans vos copies:
+        \begin{itemize}
+            \item $f_n(x)=\frac{1}{1+nx}$.
+        \end{itemize}
+        }
+    \end{itemize}
+    \item  Soit $\delta\in]0,1[$. Montrer que
+    $$\lim_n\int_\delta^1f_n(t)dt=\int_\delta^1f(t)dt$$
+    \correction{Appliquer le théorème de l'intégration de la convergence uniforme: en effet, par (ii), la convergence de $(f_n)_n$ est uniforme sur le compact $[\delta,1]\subset]0,1]$.}
+    
+    et que
+    $$\abs{\int_0^\delta f_n(t)dt-\int_0^\delta f(t)dt}\leq 2\delta M.$$
+    \correction{D'abord, comme $f(x)=\lim_nf_n(x)$ et que $\abs{f_n(x)}\leq\norm{f_n}_\infty\leq M$, on a $\abs{f(x)}\leq M$ pour tout $x\in[0,1]$. Par suite, on a
+    $$\abs{\int_0^\delta f_n(t)dt-\int_0^\delta f(t)dt}\leq
+    \abs{\int_0^\delta f_n(t)dt}+\abs{\int_0^\delta f(t)dt}\leq
+    \int_0^\delta \abs{f_n(t)}dt+\int_0^\delta \abs{f(t)}dt\leq
+    \delta M+\delta M.$$
+    }
+    \item En déduire que
+    $$\lim_n\int_0^1f_n(t)dt=\int_0^1f(t)dt.$$
+    \correction{En découpant $\int_0^1=\int_0^\delta+\int_\delta^1$, on a
+    $$\begin{aligned}
+    \abs{\int_0^1 f_n(t)dt-\int_0^1 f(t)dt} & \leq\abs{\int_0^\delta f_n(t)dt-\int_0^\delta f(t)dt}+\abs{\int_\delta^1 f_n(t)dt-\int_\delta^1 f(t)dt} \\
+    &\leq 2\delta M+\abs{\int_\delta^1 f_n(t)dt-\int_\delta^1 f(t)dt}
+    \end{aligned}$$
+    où la dernière inégalité vient de la question précédente.
+    
+    \comment{L'idée est alors de faire tendre $n\to+\infty$ \textbf{puis} $\delta\to0$.}
+    
+    Concrètement et rigoureusement: soit $\varepsilon>0$; prenons $\delta>0$ tel que $2\delta M\leq\frac{\varepsilon}{2}$ (par exemple $\delta=\frac{\varepsilon}{4M+1}$ convient); encore une fois d'après la question précédente, il existe un entier $N$ \comment{(qui dépend de $\delta$)} tel que $\abs{\int_\delta^1 f_n(t)dt-\int_\delta^1 f(t)dt}<\frac{\varepsilon}{2}$ pour tout $n\geq N$; alors pour tels $n$, on obtient
+    $$\abs{\int_0^1 f_n(t)dt-\int_0^1 f(t)dt}\leq \frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.$$
+
+    \comment{L'argument avec $\limsup_n$ (mais essentiellement le même que le précédent): lorsque $n\to+\infty$, on obtient
+    $$0\leq\limsup_n\abs{\int_0^1 f_n(t)dt-\int_0^1 f(t)dt}\leq 2\delta M$$
+    pour tout $\delta\in]0,\pi]$, donc
+    $$\limsup_n\abs{\int_0^1 f_n(t)dt-\int_0^1 f(t)dt}=0,$$
+    d'où on conclut.}
+    }
+\end{enumerate}
+
+% \vspace{.1in}
+
+% \noindent
+% \textbf{4. (3 pts, Fonction polylogarithme $Li_2(z)$)} On considère la série de fonctions
+% $$f(x):=\sum_{n\geq1}\frac{x^n}{n^2}$$
+% pour $x\in\R$.
+% \begin{enumerate}[label=\alph*)]
+%     \item Montrer que $f(x)$ converge normalement sur $[-1,1]$.
+%     \item Montrer que $f(x)$ est dérivable sur $]-1,1[$ et calculer $xf'(x)$.
+%     \item Montrer que $f(x)$ est deux fois dérivable sur $]-1,1[$ et qu'elle vérifie l'équation différentielle ordinaire
+%     $$x(1-x)f''(x)+(1-x)f'(x)=x.$$
+% \end{enumerate}
+
+\vspace{.1in}
+
+\noindent
+\textbf{5. (2 pts, Bonus)}
+Soit $\sum_n a_n$ une série divergente avec $a_n>0$. Notons $S_n=\sum_{k\leq n}a_k$. Montrer que $\sum_n \frac{a_n}{S_n}$ diverge. (Indication: le critère de Cauchy.)\\
+\correction{C'est vraiement un bonus. D'après le critère de Cauchy, il faut montrer qu'il existe $\varepsilon>0$ tel que pour tout entier $N$, il existe $n>m\geq N$ tels que
+$$\frac{a_{m+1}}{S_{m+1}}+\dots+\frac{a_n}{S_n}\geq\varepsilon.$$
+On prend $m=N$, $\varepsilon\in]0,1[$ et déterminera $n$ plus tard. Comme $a_n\geq0$, on a $S_k\leq S_n$ pour tout $k\geq n$. Ainsi,
+$$\frac{a_{m+1}}{S_{m+1}}+\dots+\frac{a_n}{S_n}\geq\frac{a_{N+1}+\dots+a_n}{S_n}=\frac{S_n-S_N}{S_n}.$$
+Or, par hypothèse, $\sum a_n$ est une \textbf{série divergente de termes positifs}, donc $S_n\xrightarrow{n\to+\infty}+\infty$ (voir le polycopié, Chapitre 1, Proposition 3.1.1). Le membre de droite ci-dessus tend alors vers 1 lorsqu'on fixe $N$ et fait tendre $n\to+\infty$, et par conséquent, il existe $n$ tel que le membre de droite est supérieure à $\varepsilon\in]0,1[$. 
+}
+
+
+
+
+
+
+
+
+
+\end{document}
+
+

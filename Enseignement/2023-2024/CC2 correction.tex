@@ -1,0 +1,170 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\linespread{1.2}
+\pagestyle{empty}
+\usepackage{enumitem}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\scalarprod}[2]{\langle#1,#2\rangle}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\abs}[1]{\left|#1\right|}
+\let\Re\relax
+\DeclareMathOperator{\Re}{Re} % real part
+
+\usepackage{xcolor}
+\newcommand{\correction}[1]{{\color{red}#1}}
+\newcommand{\comment}[1]{{\color{blue}#1}}
+
+\begin{document}
+
+\noindent LU2MA260 - Contrôle continu n\textdegree2
+\hfill 13 décembre 2022
+\medskip\hrule
+\vspace{.3in}
+
+\emph{Durée: 1 heure. Aucun document autorisé.
+Ce contrôle sera noté sur \textbf{10 points}. Justifier TOUT.}
+
+\vspace{.1in}
+\noindent
+\textbf{Convention :}
+On utilisera la lettre $x$ (\emph{resp}. $z$) pour une variable réelle (\emph{resp}. complexe).
+
+\vspace{.1in}
+\noindent
+\textbf{1. (4 pts)}
+Déterminer le rayon de convergence des séries entières suivantes:
+\begin{enumerate}[label=\alph*)]
+\begin{minipage}{0.4\linewidth}
+    \item $\sum_n 2^nz^{2n}$,
+    \item $\sum_n n^{\ln n}z^n$,
+\end{minipage}
+\begin{minipage}{0.4\linewidth}
+    \item $\sum_n \frac{(2n)!}{(n!)^2}z^n$,
+    \item $\sum_n n\cos(\frac{n\pi}{2})z^n$.
+\end{minipage}
+\end{enumerate}
+
+\correction{
+\begin{enumerate}[label=\alph*)]
+    % \item Appliquer le critère de d'Alembert : $\rho=\frac{1}{2}$.
+    \item Appliquer d'Alembert généralisé ou utiliser TD 4 Exercice 3 (1) : $\rho=\frac{1}{\sqrt{2}}$.\\
+    \comment{On ne peut pas appliquer le critère de d'Alembert (la version non généralisé) directement car LES COEFFICIENTS DE $z^{2n+1}$ SONT NULS.\\
+    D'ailleurs, si vous faites le changement de variables $n\mapsto m/2$, le problème c'est que la série obtenue devient $\sum_{m~\text{pair}}2^{m/2}z^m$; or, la série $\sum_{m~\text{pair}}\abs{2^{m/2}z^m}$ est CONTROLEE PAR, MAIS PAS EQUIVALENTE A, $\sum_{m\in\N}\abs{2^{m/2}z^m}$; ainsi le critère de Cauchy-Hadamard ou de d'Alembert donnent seulement que la série en question converge si $\abs{z}<1/\sqrt{2}$; il faudrait encore justifier la divergence ailleurs.}
+    % \item Par définition du rayon de convergence du polycopié ou TD 4 Exercice 5 : la suite $(2^nr^{n^2})_n$ est bornée si $r<1$ et non bornée si $r>1$, d'où $\rho=1$.\\
+    % \comment{On ne peut non plus appliquer le critère de d'Alembert. D'ailleurs, si vous voulez appliquer le critère de d'Alembert << ponctuellement >>, alors il faudrais regarder le comportement de $\abs{2^{n+1}z^{(n+1)^2}/2^nz^{n^2}}=\abs{2z^{2n+1}}$ À LA LIMITE $n\to+\infty$. Voici l'argument:}
+    % \correction{Si $z=0$, la série converge; sinon on applique le critère de d'Alembert ponctuellement pour la série $\sum_n2^nz^{n^2}$ : si $0<\abs{z}<1$, $\lim_n\abs{2z^{2n+1}}=0<1$, d'où la convergence; si $\abs{z}>1$, $\lim_n\abs{2z^{2n+1}}=+\infty>1$, d'où la divergence.}
+    % \comment{Attention: si $\abs{z}=1$, $\lim_n\abs{2z^{2n+1}}=2>1$, donc la série diverge également.}
+    \item Appliquer Cauchy-Hadamard :  $n^{(\ln n)/n}=e^{(\ln n)^2/n}\to e^0=1$, d'où $\rho=1$.
+    \item Appliquer d'Alembert pour trouver $\rho=1/4$.\\
+    \comment{$(2n)!$ devient $(2(n+1))!=(2n+2)(2n+1)\cdot(2n)!$ lorsqu'on remplace $n$ par $n+1$.}
+    \item Par définition du rayon de convergence du polycopié ou TD 4 Exercice 5: d'une part, la suite $(n\sin(n\pi/3)z^n)_n$ est non bornée si $\abs{z}\geq1$ car la sous-suite $((6n+1)\sin(\pi/3)z^{6n+1})_n$ l'est, donc $\rho\leq 1$; d'autre part, $\abs{n\sin(n\pi/3)z^n}\leq n\abs{z}^n$, qui forme une suite bornée si $\abs{z}<1$, donc $\rho\geq1$. Ainsi $\rho=1$.\\
+    \comment{On ne peut pas appliquer d'Alembert car les coefficients S'ANNULENT si $n$ est impair. La périodicité de $\cos(n\pi/2)$ vous aide seulement à trouver une sous-suite non bornée si $\abs{z}>1$. Notez que $\cos(4n\cdot\pi/3)$ s'annule toujours pour $n\in\N$.}
+\end{enumerate}
+}
+
+\vspace{.1in}
+\noindent
+\textbf{2. (2 pts)} Donner des exemples :
+\begin{enumerate}[label=\alph*)]
+    \item une série entière dont le domaine de convergence est \emph{exactement} $D(0,1)$ ; \\
+    \correction{La série géométrique $\sum_n z^n$ convient.}\\
+    \comment{La série $\sum_n z^n/n$ a pour DOMAINE DE CONVERGENCE $\overline{D}(0,1)\backslash\{1\}$ : surtout faites attention quand $z=e^{i\theta}\neq 1$, utilisez le critère d'Abel, cf. TD 1.}
+    \item une série entière dont le domaine de convergence est \emph{exactement} $\overline{D}(0,1)$ ; \\
+    \correction{La série $\sum_nz^n/n^2$ convient puisqu'elle converge normalement sur $\overline{D}(0,1)$, et diverge si $\abs{z}>1$.}\\
+    \comment{Mais la série $\sum_nz^n/n!$ ne convient pas car elle converge trop vite de sorte que son domaine de convergence est $\C$, qui est beaucoup plus gros que demandé. Non plus pour la série $\sum_nz^n/n$ ou $\sum_n(-1)^nz^n/n=\sum_n(-z)^n/n$, voir la remarque précédente.}
+    % \item une série entière dont le domaine de convergence est strictement entre $D(0,1)$ et $\overline{D}(0,1)$.
+\end{enumerate}
+
+\vspace{.1in}
+\noindent
+\textbf{3. (2 pts)} Application du théorème d'Abel radial.
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que $\ln(1+x) = \sum_{n\geq1} (-1)^{n-1}\frac{x^n}{n}$pour $x\in]-\rho,\rho[$, où $\rho$ est son rayon de convergence que vous déterminerez. (Indication: considérer la série géométrique $\sum_{n\geq0} x^n$.) \\
+    \correction{Appliquer le théorème de dérivation/intégration.} \\
+    \comment{Mais attention c'est un intervalle OUVERT a priori et que $x=1$ N'EST PAS DANS CET INTERVALLE ! Parce qu'en général, les résultats de la dérivation, d'intégration ne marchent que dans le disque OUVERT $D(0,\rho)$. Pour justifier que l'on peut évaluer l'identité ci-dessus en $x=1$, on a besoin du théorème d'Abel radial.}
+    \item Montrer que $\sum_{n=1}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2)$. \\
+    \correction{La série à gauche ci-dessus converge si $x=1$ (série alternée), donc Abel radial nous dit que la série  $\sum_n(-1)^nx^n/n$ converge uniformément sur $[0,1]$ avec $x=1$ contenu dedans, donc la somme est CONTINUE sur $[0,1]$, donc
+    $$\sum_n(-1)^n/n=\lim_{x\to 1^-}\sum_n(-1)^nx^n/n,$$
+    d'où
+    $$\sum_n(-1)^n/n=\lim_{x\to1^-}-\ln(1+x)=-\ln(2),$$
+    la dernière égalité venant de la CONTINUITE DU LOGARITHME.}
+\end{enumerate}
+
+\vspace{.1in}
+\noindent
+\textbf{4. (4 pts + Bonus 2 pts)}
+Vrai ou faux ? Justifier si vrai, en donner un contre-exemple si faux.
+
+Soit $S(z)=\sum_{n\geq0} a_nz^n$ de rayon de convergence $1$.
+\begin{enumerate}[label=\alph*)]
+    \item Si $S(1)$ converge, alors $\lim_{x\to 1^-}S(x)$ existe. \\
+    \correction{Vrai. Par Abel radial.}
+    \item Si $\lim_{x\to1^-}S(x)$ existe, alors $S(1)$ converge. \\
+    \correction{Faux. Contre-exemples: $\sum_n(-z)^n$, etc.}
+    \item La série dérivée $S'(z)=\sum_n na_nz^{n-1}$ converge partout sur $D(0,1)$. \\
+    \correction{Vrai. Parce que $S'(z)$ et $S(z)$ ont le même RAYON de convergence d'après le cours.}
+    \item La série dérivée $S'(z)=\sum_n na_nz^{n-1}$ converge partout où $S(z)$ converge. \\
+    \correction{Faux. A priori elles n'ont pas le même DOMAINE de convergence. Contre-exemple : $S(z)=\sum_nz^n/n$ et $z=-1$.}
+    \item Si $S(z)$ converge uniformément sur $D(0,1)$, alors $S(z)$ converge sur $\overline{D}(0,1)$. (Un peu dur.) \\
+    \correction{Vrai. Il faudrait reprendre la même preuve que TD 2 Exercice 6 comme suit. Comme $S(z)$ converge uniformément sur $D(0,1)$, pour tout $\varepsilon>0$ il existe $N\in\N$ tel que pour tous $n>m\geq N$ et $z\in D(0,1)$, on a
+    $$\abs{\sum_{k=m}^na_kz^k}\leq\varepsilon.$$
+    On vérifie maintenant que cette inégalité rest valable pour $\abs{z}\leq 1$: si $\abs{z}<1$, il ne rest rien à faire ; si $\abs{z}=1$, prenons une suite $(t_l)_{l\in\N}\in[0,1[$ qui tend vers $1$ (par exemple $t_l=1-1/l$), alors $t_lz\in D(0,1)$, donc on a
+    $$\abs{\sum_{k=m}^na_k\left(t_lz\right)^k}\leq\varepsilon;$$
+    comme il n'y a qu'un nombre fini de termes et $l$ est indépendant de $m$ et $n$ et $k$, on peut faire tendre $l\to+\infty$ et trouver
+    $$\abs{\sum_{k=m}^na_kz^k}\leq\varepsilon.$$
+    Ainsi $S(z)$ vérifie le critère de Cauchy uniform sur $\overline{D}(0,1)$, d'où la convergence (uniforme) sur $\overline{D}(0,1)$.
+    }\\
+    \comment{Cela vous dit que on n'espère presque jamais de convergence UNIFORME sur le disque ouvert du rayon égal au rayon de convergence, puisque SOUVENT une série entière ne converge PAS PARTOUT SUR SON CERCLE DE CONVERGENCE.}
+    \item Si $S(z)$ converge sur $\overline{D}(0,1)$, alors $S(z)$ converge uniformément sur $D(0,1)$. (Dur. Devinez !) \\
+    \correction{Faux. Voir la toute fin pour un contre-exemple.} \\
+    \comment{ATTENTION: dans l'énoncé du théorème d'Abel radial, on suppose la convergence de la série en UN SEUL point $z_0$ de module le rayon de convergence $\rho$, et on obtient la convergence uniforme sur le segment $[0,z_0]$. Ce résultat ne se généralise pas au cas où on est plus généreux et suppose la convergence de la série en TOUT point de module $\rho$ : dans ce cas-là la convergence est uniforme sur CHAQUE DIAMETRE FERME de $\overline{D}(0,1)$ (d'après Abel radial), mais la convergence pourrait être non uniforme sur $\overline{D}(0,1)$ --- vous trouverez des contre-exemples si vous tournez la page du sujet.}
+\end{enumerate}
+
+\vspace{.1in}
+\noindent
+\textbf{En dehors du CC.}
+Soit $f(z)=\sum_{n\geq0}a_nz^n$ une fonction DSE sur $\C$ tout entier. On se propose de montrer que 
+\begin{quote}
+    \textit{Si $f(z)$ est bornée sur $\C$ par une constante $M>0$, alors $f(z)$ est une constante.}
+\end{quote}
+\begin{enumerate}[label=\alph*)]
+    % \item Rappeler pourquoi $f(z)$ est continue sur $\C$.
+    \item Soit $R>0$. Montrer que la série numérique $\sum_{n\geq0} a_nR^n$ est absolument convergente. \\
+    \correction{D'après le cours $\sum_n\abs{a_n}R^n$ converge si $R$ est STRICTEMENT inférieur au rayon de convergence, qui vaut $+\infty$ d'après l'hypothèse.}
+    \item En déduire que pour tout $N\in\N$, la série
+    $$\sum_{n\geq0}a_nR^{n-N}e^{i(n-N)\theta},\quad \theta\in[0,2\pi]$$
+    en la variable $\theta$ converge normalement vers la fonction $\frac{f(Re^{i\theta})}{R^Ne^{iN\theta}}$. \\
+    \correction{Le point est de montrer l'UNIFORMITE de la convergence.\\
+    \textbf{Argument 1}: il suffit de montrer la convergence normale, c'est-à-dire la convergence de la série numérique $\sum_n \abs{a_n}R^{n-N}=R^{-N}\sum_n\abs{a_n}R^n$.} \\
+    \comment{\textbf{Argument 2} (qui est essentiellement le même que le 1) : il suffit de montrer la convergence uniforme de la série $\sum_na_nR^ne^{in\theta}$ puis diviser par $R^Ne^{iN\theta}$. Cette série-ci est l'évaluation de la série $f(z)$ en $z=Re^{i\theta}$, i.e. sur le cercle de rayon $R$.}
+    \item Calculer $\int_0^{2\pi}e^{in\theta}d\theta$ pour $n\in\Z$. \\
+    \correction{$\int_0^{2\pi}e^{in\theta}d\theta=(e^{2n\pi i}-1)/in=0$ si $n\neq 0$, et $\int_0^{2\pi}e^{in\theta}d\theta=2\pi$ si $n=0$.}
+    \item En déduire que 
+    $$\frac{1}{2\pi}\int_0^{2\pi}\frac{f(Re^{i\theta})}{R^Ne^{iN\theta}}d\theta=a_N.$$
+    \correction{D'après la convergence uniforme en $\theta$ de la question précédente, on peut échanger l'intégration par rapport à $\theta$ et la somme $\sum_n$, puis utiliser le calcul qu'on vient de faire :
+    $$\frac{1}{2\pi}\int_0^{2\pi}\frac{f(Re^{i\theta})}{R^Ne^{iN\theta}}d\theta=\frac{1}{2\pi}\sum_n\int_0^{2\pi}a_nR^{(n-N)}e^{i(n-N)\theta}d\theta=\frac{1}{2\pi}(a_N\cdot2\pi+\sum_{n\neq N}0)=a_N,$$
+    où on voit l'importance du calcul de $\int_0^{2\pi}e^{in\theta}d\theta$.}
+    \item Montrer que $\abs{a_N}\leq\frac{M}{R^N}$. En conclure.\\
+    \correction{Par inégalité triangulaire, puis par la majoration $\norm{f}_\infty\leq M$, on obtient
+    $$\abs{a_N}=\abs{\frac{1}{2\pi}\int_0^{2\pi}\frac{f(Re^{i\theta})}{R^Ne^{iN\theta}}d\theta}\leq
+    \frac{1}{2\pi}\int_0^{2\pi}\abs{\frac{f(Re^{i\theta})}{R^Ne^{iN\theta}}}d\theta\leq
+    \frac{1}{2\pi}\int_0^{2\pi}\frac{M}{R^N}d\theta=\frac{M}{R^N}.$$
+    Ici $R>0$ étant ARBITRAIRE, donc en faisant tendre $R\to+\infty$, on obtient $\abs{a_N}\leq 0$ si $N>0$, donc $a_N=0$ si $N>0$, d'où $f(z)=\sum_n a_nz^n=a_0$ est une constante.}
+\end{enumerate}  
+
+
+
+
+
+
+\end{document}
+

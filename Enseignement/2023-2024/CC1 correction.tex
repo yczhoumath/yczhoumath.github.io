@@ -1,0 +1,146 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\linespread{1.2}
+\pagestyle{empty}
+\usepackage{enumitem}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\scalarprod}[2]{\langle#1,#2\rangle}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\abs}[1]{\left|#1\right|}
+
+\usepackage{xcolor}
+\newcommand{\correction}[1]{{\color{red}#1}}
+\newcommand{\comment}[1]{{\color{blue}#1}}
+
+\begin{document}
+
+\noindent LU2MA260 - Contrôle continu n\textdegree1
+\hfill 23 octobre 2022
+\medskip\hrule
+\vspace{.3in}
+
+\emph{Durée: 1 heure. Aucun document autorisé.
+Ce contrôle sera noté sur \textbf{10 points}.}
+
+\correction{Corrigé en rouge (peut-être indication toute seule).}
+
+\comment{Commentaire en bleu.}
+
+\vspace{.1in}
+
+\noindent
+\textbf{1. (2 pts)} Questions de cours:
+
+\begin{enumerate}[label=\alph*)]
+    \item Rappelez la comparaison séries-intégrales, puis montrez la divergence de la série de Bertrand $\sum_{n\geq 2}\frac{1}{n\ln(n)}$.\\
+    \correction{Soit $f(x)$ une fonction continue \textbf{positive décroissante vers 0} sur $[0,+\infty[$. Alors la série $\sum_{n\geq0} f(n)$ et l'intégrale $\int_0^{+\infty} f(t)dt$ sont de la même nature. On l'applique à $f(x)=\frac{1}{x\ln(x)}$ définie sur $[2,+\infty[$, en calculant
+    \[\int_2^{+\infty}\frac{1}{t\ln(t)}dt=\int_2^{+\infty}\frac{1}{\ln(t)}d\ln(t)=\int_{\ln(2)}^{+\infty}\frac{1}{t}dt\]
+    qui diverge.}
+    \item Rappelez pourquoi si $(f_n)_n$ est une suite de fonctions bornées sur un intervalle $I$ qui converge uniformément vers $f$, alors $f$ est bornée sur $I$.\\
+    \correction{Soit $N\in\N$ tel que $\abs{f_N(x)-f(x)} \leq 1$ pour tout $x\in I$. On a alors
+    \[\abs{f(x)}\leq\abs{f_N(x)}+1\leq\norm{f_N}_\infty+1\]
+    pour tout $x\in I$.}
+    % \item Rappelez la définition d'une norme $\norm{\cdot}$ sur un $\R$-espace vectoriel $E$.
+\end{enumerate}
+
+\vspace{.1in}
+
+\noindent
+\textbf{2. (3 pts)}
+Déterminer la nature des suites de nombres suivantes :
+
+\begin{enumerate}[label=\alph*)]
+    \item $\sum_{n\geq1}\frac{1}{n+\ln(n)^2}$.
+    \correction{Divergente par équivalence : $\frac{1}{n+\ln(n)^2} \sim \frac{1}{n}$.}
+    \item $\sum_{n\geq2}\left(\frac{\ln(n)}{n}\right)^2$. (Indication : comparaison avec une série de Riemann.)\\
+    \correction{Convergente par comparaison : $\left(\frac{\ln(n)}{n}\right)^2 \sim o(\frac{1}{n^{3/2}})$.}
+    \item $\sum_{n\geq2} n e^{-n^2+n}$.
+    \correction{Convergente par le critère de d'Alembert : $\frac{(n+1) e^{-(n+1)^2+(n+1)}}{n e^{-n^2+n}}=\frac{n+1}{n} e^{-2n} \to 0$.}
+\end{enumerate}
+
+\vspace{.1in}
+
+\noindent
+\textbf{3. (2 pt)}
+Déterminez si la \textbf{suite} de fonctions $f_n(x)=nxe^{-nx}$ converge uniformément sur $I=[1/10,+\infty[$, respectivement sur $I=[0,+\infty[$. 
+
+\correction{Oui pour $I=[1/10,+\infty[$, car si $n\geq 10$, $\norm{f_n}_\infty=\frac{n}{10}e^{-\frac{n}{10}}\to 0$. Non pour $I=[0,+\infty[$, car $f_n$ converge simplement vers 0 mais $f_n(\frac{1}{n})=e^{-1}\not\to0$.}
+
+\vspace{.1in}
+
+\noindent
+\textbf{4. (3 pts)} Vrai ou faux : jusitifiez si l'énoncé est vrai, donnez-en un contre-exemple s'il est faux.
+
+\noindent
+Soit $\sum_{n\geq0} a_n$ une série de nombres.
+\begin{enumerate}[label=\alph*)]
+    \item Si elle converge, alors $\lim_n\sqrt[n]{\abs{a_n}} \leq 1$ dès que la limite existe.\\
+    \correction{Vrai, comme contraposé du critère de Cauchy, ou par comparaison avec la série géométrique.}
+    \item Si elle converge, alors $\sum_{n\geq0} a_n^2$ converge. (Indicaiton : séries altérnées.)\\
+    \correction{Faux, contre-exemple : $a_n=\frac{(-1)^n}{\sqrt{n}}$.}
+    \item Si elle diverge et si $a_n\geq0$, alors $a_n \not\to 0,~n\to+\infty$.\\
+    \correction{Faux, contre-exemple : $a_n=\frac{1}{n}$.}
+\end{enumerate}
+Soit $(f_n)_n\in\mathcal{C}^0([0,1],\C)^\N$ une \textbf{suite} de fonctions.
+\begin{enumerate}[resume*]
+    \item Si $f_n$ converge simplement vers une fonction $f\in\mathcal{C}^0([0,1],\C)$ et si $\int_0^1f_n \to \int_0^1 f$, alors la convergence $f_n \to f$ est uniforme sur $[0,1]$. (Indication : on peut supposer $f=0$.)\\
+    \correction{Faux, contre-exemple : la suite dans l'exercice 3.}\\
+    \comment{Si on impose la décroissance de la suite, i.e. $f_n(x)\geq f_{n+1}(x)$, alors la convergence de la suite des intégrales est due au théorème de convergence dominée, et la convergence uniforme est due au théorème de Dini.}
+    \item Si $0 \leq f_n \leq 1$ et $f_{n+1}\leq f_n$, alors $f_n$ converge simplement.\\
+    \correction{Vrai, par la convergence monotone.}
+    \item Si $0 \leq f_n \leq 1$ et $f_{n+1}\leq f_n$, alors $f_n$ converge uniformément.\\
+    \correction{Faux, contre-exemple : $f_n(x)=e^{-nx}$.}
+\end{enumerate}
+
+% \vspace{.1in}
+
+% Déterminer la nature des séries numérique suivantes:
+% \begin{enumerate}[label=\alph*)]
+% \begin{minipage}{0.4\linewidth}
+% \end{minipage}
+% \begin{minipage}{0.4\linewidth}
+% \end{minipage}
+% \end{enumerate}
+
+
+\vspace{.1in}
+
+\noindent
+\textbf{5. (3 pts)}
+Considérons la \textbf{série} de fonctions $\sum_{n\geq1}(-1)^{n-1}\frac{x^n}{\sqrt{n}}$.
+\begin{enumerate}[label=\alph*)]
+    \item Montrez que si $x\in]-1,1]$, la série converge.\\
+    \correction{Critère d'Abel pour $\sum_{n\geq1}(-1)^{n-1}x^n\frac{1}{\sqrt{n}}$.}
+    % \item Montrez que si $x\in]-\infty,-1]$, la série diverge.
+    % \item Montrez que si $x\in]1,+\infty]$, la série diverge.
+    \item Montrez que la série converge uniformément sur $[-a,a]$ si $0<a<1$.\\
+    \correction{En fait, elle converge uniformément.}
+\end{enumerate}
+Les trois questions suivantes sont étroitement reliées :
+\begin{enumerate}[resume*]
+    \item Écrivez le critère de Cauchy pour la convergence uniforme de la série (i.e. pour la convergence uniforme de la suite des sommes partielles de la série) sur $]-1,0]$.\\
+    \correction{$\forall \epsilon>0, \exists N, \forall n\geq m\geq N, \forall x\in ]-1,0]$, on a
+    \[\tag{$\star$} \abs{f_n(x)-f_m(x)}\leq \epsilon.\]}
+    \item Qu'obtenez vous lorsque $x\to(-1)^+$ ? (Ceci devrait correspondre au critère de Cauchy pour une série de nombres que vous préciserez.)\\
+    \correction{L'inégalité reste vraie pour $x=-1$. C'est le critère de Cauchy pour la série harmonique $\sum_{n\geq1} \frac{1}{n}$.}
+    \item En déduisez que la convergence de la série n'est pas uniforme sur $]-1,0]$.\\
+    \correction{S'il y avait la convergence uniforme sur $]-1,0]$, alors la série harmonique convergerait, ce qui est contradictoire.}
+\end{enumerate}
+Petite remarque : la convergence sur $[0,1]$ est pourtant uniforme (Théorème d'Abel radial).
+
+\vfill
+
+\centering\emph{Fin du corrigé.}
+
+\end{document}
+
+

@@ -1,0 +1,117 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\linespread{1.2}
+\pagestyle{empty}
+\usepackage{enumitem}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\scalarprod}[2]{\langle#1,#2\rangle}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\abs}[1]{\left|#1\right|}
+
+\begin{document}
+
+\noindent LU2MA260 - Contrôle continu n\textdegree1
+\hfill 23 octobre 2023
+\medskip\hrule
+\vspace{.3in}
+
+\emph{Durée: 1 heure. Aucun document autorisé.
+Ce contrôle sera noté sur \textbf{10 points}.}
+
+\vspace{.1in}
+
+\noindent
+\textbf{1. (2 pts)} Questions de cours:
+
+\begin{enumerate}[label=\alph*)]
+    \item Rappelez la comparaison séries-intégrales, puis montrez la divergence de la série de Bertrand $\sum_{n\geq 2}\frac{1}{n\ln(n)}$.
+    \item Rappelez pourquoi si $(f_n)_n$ est une suite de fonctions bornées sur un intervalle $I$ qui converge uniformément vers $f$, alors $f$ est bornée sur $I$. 
+    % \item Rappelez la définition d'une norme $\norm{\cdot}$ sur un $\R$-espace vectoriel $E$.
+\end{enumerate}
+
+\vspace{.1in}
+
+\noindent
+\textbf{2. (3 pts)}
+Déterminer la nature des suites de nombres suivantes :
+
+\begin{enumerate}[label=\alph*)]
+    \item $\sum_{n\geq1}\frac{1}{n+\ln(n)^2}$.
+    \item $\sum_{n\geq2}\left(\frac{\ln(n)}{n}\right)^2$. (Indication : comparaison avec une série de Riemann.)
+    \item $\sum_{n\geq2} n e^{-n^2+n}$.
+\end{enumerate}
+
+\vspace{.1in}
+
+\noindent
+\textbf{3. (2 pt)}
+Déterminez si la \textbf{suite} de fonctions $f_n(x)=nxe^{-nx}$ converge uniformément sur $I=[1/10,+\infty[$, respectivement sur $I=[0,+\infty[$. 
+
+\vspace{.1in}
+
+\noindent
+\textbf{4. (3 pts)} Vrai ou faux : jusitifiez si l'énoncé est vrai, donnez-en un contre-exemple s'il est faux.
+
+\noindent
+Soit $\sum_{n\geq0} a_n$ une série de nombres.
+\begin{enumerate}[label=\alph*)]
+    \item Si elle converge, alors $\lim_n\sqrt[n]{\abs{a_n}} \leq 1$ dès que la limite existe.
+    \item Si elle converge, alors $\sum_{n\geq0} a_n^2$ converge. (Indicaiton : séries altérnées.)
+    \item Si elle diverge et si $a_n\geq0$, alors $a_n \not\to 0,~n\to+\infty$.
+\end{enumerate}
+Soit $(f_n)_n\in\mathcal{C}^0([0,1],\C)^\N$ une \textbf{suite} de fonctions.
+\begin{enumerate}[resume*]
+    \item Si $f_n$ converge simplement vers une fonction $f\in\mathcal{C}^0([0,1],\C)$ et si $\int_0^1f_n \to \int_0^1 f$, alors la convergence $f_n \to f$ est uniforme sur $[0,1]$. (Indication : on peut supposer $f=0$.)\footnotemark
+    \item Si $0 \leq f_n \leq 1$ et $f_{n+1}\leq f_n$, alors $f_n$ converge simplement.
+    \item Si $0 \leq f_n \leq 1$ et $f_{n+1}\leq f_n$, alors $f_n$ converge uniformément.
+\end{enumerate}
+
+\footnotetext{Si on suppose de plus que $f_{n+1}\leq f_n$, alors la convergence $\int_0^1f_n \to \int_0^1 f$ est automatique par le théorème de convergence dominée, et $f_n$ converge uniformément par le théorème de Dini.}
+
+% \vspace{.1in}
+
+% Déterminer la nature des séries numérique suivantes:
+% \begin{enumerate}[label=\alph*)]
+% \begin{minipage}{0.4\linewidth}
+% \end{minipage}
+% \begin{minipage}{0.4\linewidth}
+% \end{minipage}
+% \end{enumerate}
+
+
+\vspace{.1in}
+
+\noindent
+\textbf{5. (3 pts)}
+Considérons la \textbf{série} de fonctions $\sum_{n\geq1}(-1)^{n-1}\frac{x^n}{\sqrt{n}}$.
+\begin{enumerate}[label=\alph*)]
+    \item Montrez que si $x\in]-1,1]$, la série converge.
+    % \item Montrez que si $x\in]-\infty,-1]$, la série diverge.
+    % \item Montrez que si $x\in]1,+\infty]$, la série diverge.
+    \item Montrez que la série converge uniformément sur $[-a,a]$ si $0<a<1$.
+\end{enumerate}
+Les trois questions suivantes sont étroitement reliées :
+\begin{enumerate}[resume*]
+    \item Écrivez le critère de Cauchy pour la convergence uniforme de la série (i.e. pour la convergence uniforme de la suite des sommes partielles de la série) sur $]-1,0]$.
+    \item Qu'obtenez vous lorsque $x\to(-1)^+$ ? (Ceci devrait correspondre au critère de Cauchy pour une série de nombres que vous préciserez.)
+    \item En déduisez que la convergence de la série n'est pas uniforme sur $]-1,0]$. \footnotemark
+\end{enumerate}
+
+\footnotetext{La convergence sur $[0,1]$ est pourtant uniforme (Théorème d'Abel radial).}
+
+\vspace{.5in}
+
+\centering\emph{Fin du sujet.}
+
+\end{document}
+
+

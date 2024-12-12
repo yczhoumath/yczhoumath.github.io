@@ -1,0 +1,178 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\linespread{1.2}
+\pagestyle{empty}
+\usepackage{enumitem}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\scalarprod}[2]{\langle#1,#2\rangle}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\abs}[1]{\left|#1\right|}
+\let\Re\relax
+\DeclareMathOperator{\Re}{Re} % real part
+
+\begin{document}
+
+\noindent LU2MA260 - Contrôle continu n\textdegree2
+\hfill 4 décembre 2023
+\medskip\hrule
+\vspace{.3in}
+
+\emph{Durée: 1 heure. Aucun document autorisé.
+Ce contrôle sera noté sur \textbf{10 points}. Justifier TOUT.}
+
+\vspace{.1in}
+\noindent
+\textbf{Convention :}
+On utilisera la lettre $x$ (\emph{resp}. $z$) pour une variable réelle (\emph{resp}. complexe).
+
+\vspace{.1in}
+\noindent
+\textbf{1. (4 pts)}
+Déterminer le rayon de convergence des séries entières suivantes:
+\begin{enumerate}[label=\alph*)]
+\begin{minipage}{0.4\linewidth}
+    \item $\sum_n 2^nz^{2n}$,
+    \item $\sum_n n^{\ln n}z^n$,
+\end{minipage}
+\begin{minipage}{0.4\linewidth}
+    \item $\sum_n \frac{(2n)!}{(n!)^2}z^n$,
+    \item $\sum_n n\cos(\frac{n\pi}{2})z^n$.
+\end{minipage}
+\end{enumerate}
+
+\vspace{.1in}
+\noindent
+\textbf{2. (2 pts)} Donner des exemples :
+\begin{enumerate}[label=\alph*)]
+    \item une série entière dont le domaine de convergence est \emph{exactement} $D(0,1)$ ;
+    \item une série entière dont le domaine de convergence est \emph{exactement} $\overline{D}(0,1)$ ;
+    % \item une série entière dont le domaine de convergence est strictement entre $D(0,1)$ et $\overline{D}(0,1)$.
+\end{enumerate}
+
+\vspace{.1in}
+\noindent
+\textbf{3. (2 pts)} Application du théorème d'Abel radial.
+\begin{enumerate}[label=\alph*)]
+    \item Montrer que $\ln(1+x) = \sum_{n\geq1} (-1)^{n-1}\frac{x^n}{n}$ pour $x\in]-\rho,\rho[$, où $\rho$ est son rayon de convergence que vous déterminerez. (Indication: considérer la série géométrique $\sum_{n\geq0} x^n$.)
+    \item Montrer que $\sum_{n=1}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2)$.
+\end{enumerate}
+
+
+\vspace{.1in}
+\noindent
+\textbf{4. (4 pts + Bonus 2 pts)}
+Vrai ou faux ? Justifier si vrai, en donner un contre-exemple si faux.
+
+Soit $S(z)=\sum_{n\geq0} a_nz^n$ de rayon de convergence $1$.
+\begin{enumerate}[label=\alph*)]
+    \item Si $S(1)$ converge, alors $\lim_{x\to 1^-}S(x)$ existe.
+    \item Si $\lim_{x\to1^-}S(x)$ existe, alors $S(1)$ converge.
+    \item La série dérivée $S'(z)=\sum_n na_nz^{n-1}$ converge partout sur $D(0,1)$.
+    \item La série dérivée $S'(z)=\sum_n na_nz^{n-1}$ converge partout où $S(z)$ converge.
+    \item Si $S(z)$ converge uniformément sur $D(0,1)$, alors $S(z)$ converge sur $\overline{D}(0,1)$. (Un peu dur.)
+    \item Si $S(z)$ converge sur $\overline{D}(0,1)$, alors $S(z)$ converge uniformément sur $D(0,1)$. (Dur. Devinez !)
+\end{enumerate}
+
+\vspace{.1in}
+\noindent
+\textbf{5. (1 pt)}
+Pour tout $n\in\Z$, dénotons par $\varphi_n$ la fonction $\R \mapsto \C,~t \mapsto e^{int}$.
+Calculer soigneusement l'intégrale $\int_0^{2\pi}\varphi_m\overline{\varphi_n}$ pour tous $m,n\in\Z$.
+
+
+\vspace{.3in}
+\begin{center}
+    \emph{Fin du sujet.}
+\end{center}
+
+
+\vspace{.4in}
+\noindent
+\textbf{En dehors du CC :} (Théorème de Liouville)
+Soit $f(z)=\sum_{n\geq0}a_nz^n$ une fonction développable en série entière sur $\C$ tout entier. On se propose de montrer que 
+\begin{quote}
+    \textit{Si $f(z)$ est bornée sur $\C$ par une constante $M>0$, alors $f(z)$ est une constante.}
+\end{quote}
+\begin{enumerate}[label=\alph*)]
+    % \item Rappeler pourquoi $f(z)$ est continue sur $\C$.
+    \item Soit $R>0$. Montrer que la série numérique $\sum_{n\geq0} a_nR^n$ est absolument convergente. 
+    \item En déduire que pour tout $N\in\N$, la série
+    $$\sum_{n\geq0}a_nR^{n-N}e^{i(n-N)\theta},\quad \theta\in[0,2\pi]$$
+    en la variable $\theta$ converge normalement vers la fonction $\frac{f(Re^{i\theta})}{R^Ne^{iN\theta}}$.
+    \item Calculer $\int_0^{2\pi}e^{im\theta}d\theta$ pour tout $m\in\Z$.
+    \item En déduire que 
+    $$\frac{1}{2\pi}\int_0^{2\pi}\frac{f(Re^{i\theta})}{R^Ne^{iN\theta}}d\theta=a_N.$$
+    \item Montrer que $\abs{a_N}\leq\frac{M}{R^N}$. En conclure. 
+\end{enumerate}
+
+
+% \vspace{.1in}
+\newpage
+\textit{On pourrait aussi considérer la réciproque d'Exercice 4 (e) : si $S(z)$ converge sur $\overline{D}(0,1)$, alors $S(z)$ converge uniformément sur $D(0,1)$. Celle-ci est fausse, cependant le contre-exemple n'est pas facile à construire; voici une construction sous forme d'<< exercice >>.}
+
+\vspace{.1in}
+Considérons la série entière
+$$S(z)=\sum_{k\in\N}a_kz^k,\quad \text{avec}\quad a_k=\sum_{n\geq 0}\delta_n\frac{1}{(1+i\varepsilon_n)^n}.$$
+où $(\delta_n)_{n\in\N}$ et $(\varepsilon_n)_{n\in\N}$ sont deux suites dans $\R_{>0}$ tendant vers 0 telles que
+\begin{quote}
+    (ACV) La série numérique $\sum_{n}\frac{\delta_n}{\varepsilon_n}$ converge;
+    
+    ~(DV)~ La suite $(\frac{\delta_n}{\varepsilon_n^2})_{n}$ diverge vers $+\infty$.
+\end{quote}
+\textit{Cet exercice a pour but de montrer que $S(z)$ converge sur $\overline{D}(0,1)$ mais la convergence n'y est pas uniforme}.
+
+\begin{enumerate}[label=\alph*)]
+    \item Justifier que les $a_k$ sont bien définis. Donner un exemple de $(\delta_n)_n$ et $(\varepsilon_n)_n$ vérifiant \emph{toutes} les conditions ci-dessus, de sorte que cet exercice n'est pas vide ! (Indication: considérer des suites de type $1/n^\alpha$.)
+    \item (Question sur des séries numériques.) Soit $\sum_{n\in\N} u_n$ une série numérique absolument convergente. Soit $(\lambda_n)_n$ une suite dans $D(0,1)$. Montrer que la suite numérique $(\sum_n u_n\lambda_n^N)_{N\in\N}$ est bien définie et que
+    $$\lim_{N\to+\infty}\sum_{n}u_n\lambda_n^N=0.$$
+    Vous pourrez montrer d'abord que $\abs{\sum_n u_n\lambda_n^N}\leq\sum_{n=0}^m\abs{a_n}\abs{\lambda_n}^N+\sum_{n=m+1}^{+\infty}\abs{a_n}$ pour tout $m\in\N$.
+    \item Soit $z\in\overline{D}(0,1)$. Montrer que $\abs{1+i\varepsilon_n-z}\geq \varepsilon_n$ si $z=1$, et $\abs{1+i\varepsilon_n-z}\geq\Re(1-z)>0$ si $z\neq 1$.
+    En déduire l'absolue convergence de $\sum_n\frac{\delta_n}{1+i\varepsilon_n-z}$ pour tout $z\in\overline{D}(0,1)$.
+    \item Montrer que 
+    $$\sum_{k=0}^Na_kz^k-\sum_{n\geq0}\frac{\delta_n}{1+i\varepsilon_n-z}=-\sum_{n\geq0}\frac{\delta_n}{1+i\varepsilon_n-z}\left(\frac{z}{1+i\varepsilon_n}\right)^{N+1}.$$
+    En déduire que $S(z)$ converge partout sur $\overline{D}(0,1)$ et que sa somme fait
+    $$S(z)=\sum_{n\geq 0}\frac{\delta_n}{1+i\varepsilon_n-z}.$$
+    \item Soit $z\in\overline{D}(0,1)$. Montrer que $\Re\left(\frac{1}{1+i\varepsilon_n-z}\right)=\frac{\Re(1-z)}{\abs{1+i\varepsilon_n-z}^2}\geq0$ pour tout $n\in\N$.
+    En déduire que
+    $$\Re S(z)\geq \frac{\Re(1-z)}{\abs{1+i\varepsilon_n-z}^2},\quad \forall n\in\N.$$
+    \item Posons $z_n=\frac{1+i\varepsilon_n}{\abs{1+i\varepsilon_n}}$ (qui est l'intersection de $[0,1+i\varepsilon_n]$ avec le cercle unité). Montrer que
+    $$\frac{\Re(1-z_n)}{\abs{1+i\varepsilon_n-z_n}^2}\sim\frac{2\delta_n}{\varepsilon_n^2},\quad n\to+\infty.$$
+    \item Montrer que $S(z)$ n'est pas bornée sur $\overline{D}(0,1)$. En conclure.
+\end{enumerate}
+    
+    
+
+
+
+
+
+
+\end{document}
+
+
+En calculant les sommes partielles de $S(z)$ et la convergence dominée, on obtient que $S(z)$ converge sur $\overline{D}(0,1)$ et la somme fait
+    $$S(z)=\sum_{n=0}^{+\infty}\frac{\delta_n}{1+i\varepsilon_n-z}.$$
+    Ceci converge bien sûr aussi sur $\overline{D}(0,1)$.
+    
+     (on a rendu $1+i\varepsilon$ à avoir module $1$ en le dilatant). On calcule pour $z\in\overline{D}(0,1)$
+    
+    qui est une série numérique de termes positifs, donc en particulier
+    $$\Re S(z_n)\geq\frac{\delta_n\Re(1-z_n)}{\abs{1+i\epsilon_n-z_n}^2}=\frac{\delta_n}{\abs{1+i\epsilon_n}(\abs{1+i\epsilon_n}-1)}\sim\frac{2\delta_n}{\epsilon_n^2}.$$
+    On suppose maintenant qu'en plus de (ACV), on a
+    \begin{quote}
+        
+    \end{quote}
+    Alors $S(z)$ n'est pas bornée sur $\overline{D}(0,1)$ autour de $z=1$.
+    Ainsi, la convergence de la série sur $\overline{D}(0,1)$ ne peut pas être uniforme; le rayon de convergence de $S(z)$ vaut bien 1.
+
+
+
